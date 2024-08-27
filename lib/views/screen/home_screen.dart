@@ -5,13 +5,15 @@ import 'package:uis_app/views/widget/appBar_text_home.dart';
 import 'package:uis_app/views/widget/drawer_home.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+   HomeScreen({super.key,this.name = ""});
+ final String name;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  backgroundColor: Theme.of(context).colorScheme.surface,
-      drawer: const DrawerHome(),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      drawer:  DrawerHome(
+        name: name,
+      ),
       appBar: appBarTextHome(context),
       body: Stack(
         children: [
@@ -28,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                       color: AppColors.greyColor,
                     )),
                 subtitle: Text(
-                  '5'.tr,
+                  name,
                   style: const TextStyle(
                     fontSize: 17,
                     color: AppColors.blackColor,

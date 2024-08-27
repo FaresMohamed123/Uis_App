@@ -20,8 +20,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthCubit(Dio()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthCubit(Dio()),
+        ),
+        BlocProvider(
+          create: (context) => ResetPinCubit(Dio()),
+        ),
+      ],
       child: GetMaterialApp(
         darkTheme: localeController.appThemedark,
         themeMode: ThemeMode.system,

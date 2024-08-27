@@ -1,10 +1,9 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, avoid_print
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:uis_app/core/app_colors.dart';
 import 'package:uis_app/cubit/get_user_details_cubit/GetUserDetails_cubit.dart';
-import 'package:uis_app/views/screen/auth/setup_pin.dart';
 import 'package:uis_app/views/widget/auth/appBar_text.dart';
 import 'package:uis_app/views/widget/auth/rowtextAndIcon.dart';
 import 'package:uis_app/views/widget/auth/searchlogin.dart';
@@ -138,13 +137,7 @@ class GetUserInfo extends StatelessWidget {
                                   id: mycontroller.text,
                               ),
                             );
-                            // Navigator.push(context, MaterialPageRoute(
-                            //   builder: (context) {
-                            //     return SetupPin(
-                            //       id: mycontroller.text,
-                            //     );
-                            //   },
-                            // ));
+                            
                           },
                         )
                       ],

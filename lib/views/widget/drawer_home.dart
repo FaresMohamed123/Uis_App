@@ -5,9 +5,9 @@ import 'package:uis_app/core/app_colors.dart';
 
 class DrawerHome extends StatelessWidget {
   const DrawerHome({
-    super.key,
+    super.key, required this.name,
   });
-
+final String name;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -38,7 +38,7 @@ class DrawerHome extends StatelessWidget {
                       backgroundImage: AssetImage('assets/images/avatar.png'),
                     ),
                     Text(
-                      '5'.tr,
+                      name,
                       style: const TextStyle(color: AppColors.blackColor, fontSize: 16),
                     ),
                     const Text('(اسم الشركه)',

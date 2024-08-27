@@ -1,4 +1,5 @@
-import 'package:dio/dio.dart';
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uis_app/core/app_colors.dart';
@@ -101,7 +102,7 @@ class SetupPin extends StatelessWidget {
             BlocListener<ResetPinCubit, ResetPinState>(
               listener: (context, state) {
                 if (state is ResetPinSuccess) {
-                  Navigator.pushNamed(context, '/HomeScreen');
+              Navigator.pop(context);
                 }
               },
               child: Padding(

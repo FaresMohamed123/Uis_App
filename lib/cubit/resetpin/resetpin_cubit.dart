@@ -1,4 +1,6 @@
 
+// ignore_for_file: avoid_print
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
@@ -11,6 +13,7 @@ class ResetPinCubit extends Cubit<ResetPinState> {
   ResetPinCubit(this.dio) : super(ResetPinInitial());
 
   Future resetpin(String id, String pin) async {
+    // ignore: avoid_print
     print(pin)  ;
     emit(ResetPinLoading());
     try {

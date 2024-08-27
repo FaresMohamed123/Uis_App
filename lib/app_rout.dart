@@ -14,7 +14,7 @@ class AppRout {
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/HomeScreen':
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(builder: (context) =>  HomeScreen());
       case '/':
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
@@ -27,7 +27,6 @@ class AppRout {
         );
       case '/Attendance':
         return MaterialPageRoute(builder: (context) => const Attendance());
-        
       case '/AppTheme':
         return MaterialPageRoute(builder: (context) => const AppTheme());
       case '/Authenticate':
@@ -39,7 +38,7 @@ class AppRout {
                   ),
                 ));
       default:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(builder: (context) =>  HomeScreen());
     }
   }
 }
