@@ -1,12 +1,10 @@
 // ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:uis_app/core/app_colors.dart';
 
 AppBar appBarTextAttendance() {
   return AppBar(
     toolbarHeight: 70,
-
     iconTheme: const IconThemeData(color: AppColors.whiteColor),
     backgroundColor: AppColors.primaryColor,
     shape: const RoundedRectangleBorder(

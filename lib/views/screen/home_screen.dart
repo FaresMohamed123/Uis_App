@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uis_app/core/app_colors.dart';
-import 'package:uis_app/views/widget/appBar_text_home.dart';
-import 'package:uis_app/views/widget/drawer_home.dart';
+import 'package:uis_app/views/widget/home/appBar_text_home.dart';
+import 'package:uis_app/views/widget/home/drawer_home.dart';
 
 class HomeScreen extends StatelessWidget {
-   HomeScreen({super.key,this.name = ""});
+   const HomeScreen({super.key,this.name = ""});
  final String name;
   @override
   Widget build(BuildContext context) {

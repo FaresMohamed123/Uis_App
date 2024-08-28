@@ -1,13 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:get/get.dart';
 import 'package:uis_app/app_rout.dart';
 import 'package:uis_app/core/appThemeCore.dart/services.dart';
 import 'package:uis_app/core/appThemeCore.dart/translation.dart';
 import 'package:uis_app/core/appThemeText.dart/changelocal.dart';
-import 'package:uis_app/cubit/LoginEmployes/AuthCubit.dart';
-import 'package:uis_app/cubit/resetpin/resetpin_cubit.dart';
+
 
 LocaleController localeController = Get.put(LocaleController());
 void main() async {
@@ -20,24 +18,14 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AuthCubit(Dio()),
-        ),
-        BlocProvider(
-          create: (context) => ResetPinCubit(Dio()),
-        ),
-      ],
-      child: GetMaterialApp(
-        darkTheme: localeController.appThemedark,
-        themeMode: ThemeMode.system,
-        translations: MyTranslation(),
-        locale: localeController.language,
-        theme: localeController.appTheme,
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: (settings) => AppRout().onGenerateRoute(settings),
-      ),
+    return GetMaterialApp(
+      darkTheme: localeController.appThemedark,
+      themeMode: ThemeMode.system,
+      translations: MyTranslation(),
+      locale: localeController.language,
+      theme: localeController.appTheme,
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: (settings) => AppRout().onGenerateRoute(settings),
     );
   }
 }

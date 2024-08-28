@@ -18,13 +18,18 @@ AppBar appBarTextHome(BuildContext context) {
     title: const Text('UIS Personal',
         style: TextStyle(color: AppColors.whiteColor, fontSize: 20)),
     actions: [
-      const Icon(Icons.exit_to_app),
+      IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: const Icon(Icons.exit_to_app),
+      ),
       const SizedBox(width: 30),
       InkWell(
         onTap: () {
           Navigator.pushNamed(context, '/AppTheme');
         },
-        child:  Text(
+        child: Text(
           '10'.tr,
           // ignore: prefer_const_constructors
           style: TextStyle(

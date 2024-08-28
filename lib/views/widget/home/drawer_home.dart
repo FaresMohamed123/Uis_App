@@ -1,26 +1,24 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uis_app/core/app_colors.dart';
 
 class DrawerHome extends StatelessWidget {
   const DrawerHome({
-    super.key, required this.name,
+    super.key,
+    required this.name,
   });
-final String name;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.surface,
       child: Stack(
         children: [
-    
           Container(
             width: double.infinity,
             height: 120,
             decoration: const BoxDecoration(
-                            color: AppColors.primaryColor,
-    
+              color: AppColors.primaryColor,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
@@ -28,8 +26,8 @@ final String name;
             ),
           ),
           ListView(
-            children:  [
-               DrawerHeader(
+            children: [
+              DrawerHeader(
                 child: Column(
                   children: [
                     const CircleAvatar(
@@ -39,7 +37,8 @@ final String name;
                     ),
                     Text(
                       name,
-                      style: const TextStyle(color: AppColors.blackColor, fontSize: 16),
+                      style: const TextStyle(
+                          color: AppColors.blackColor, fontSize: 16),
                     ),
                     const Text('(اسم الشركه)',
                         style: TextStyle(
@@ -49,35 +48,53 @@ final String name;
                   ],
                 ),
               ),
-              ListTile(
-                onTap:  () {},
-                title:  Text('7'.tr,
-                    style: const TextStyle(
-                      color: AppColors.primaryColor,
-                    )),
-                leading: const Icon(Icons.home, color: AppColors.primaryColor),
+              ListTileWidget(
+                onTap: () {},
+                title: '7'.tr,
+                icon: Icons.home,
               ),
-               ListTile(
-                  onTap:  () {
-                    Navigator.pushNamed(context, '/Attendance');
-                  },
-                title:  Text('8'.tr,style: const TextStyle(
-                      color: AppColors.primaryColor,
-                    )),
-                leading: const Icon(Icons.work, color: AppColors.primaryColor),
+              ListTileWidget(
+                onTap: () {
+                   Navigator.pushNamed(context, '/Attendance');
+                },
+                title: '8'.tr,
+                icon: Icons.work,
               ),
-               ListTile(
-                  onTap:  () {},
-                title:  Text('9'.tr,
-                style: const TextStyle(
-                      color: AppColors.primaryColor,
-                    )),
-                leading: const Icon(Icons.settings, color: AppColors.primaryColor),
+                ListTileWidget(
+                onTap: () {
+                },
+                title: '9'.tr,
+                icon: Icons.settings,
               ),
+             
             ],
           ),
         ],
       ),
+    );
+  }
+}
+
+class ListTileWidget extends StatelessWidget {
+  const ListTileWidget({
+    super.key,
+    this.onTap,
+    required this.title,
+    required this.icon,
+  });
+  final void Function()? onTap;
+  final String title;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: onTap,
+      title: Text(title,
+          style: const TextStyle(
+            color: AppColors.primaryColor,
+          )),
+      leading: Icon(icon, color: AppColors.primaryColor),
     );
   }
 }

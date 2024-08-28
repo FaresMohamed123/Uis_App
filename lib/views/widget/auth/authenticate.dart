@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
+import 'package:uis_app/core/AppImageAsset.dart';
 import 'package:uis_app/core/app_colors.dart';
 import 'package:uis_app/cubit/LoginEmployes/AuthCubit.dart';
 import 'package:uis_app/cubit/LoginEmployes/AuthState.dart';
 import 'package:uis_app/views/screen/auth/setup_pin.dart';
 import 'package:uis_app/views/screen/home_screen.dart';
+import 'package:uis_app/views/widget/otpTextFieldwidget.dart';
 
 class Authenticate extends StatelessWidget {
   Authenticate({super.key, required this.id});
@@ -16,8 +18,9 @@ class Authenticate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   
-       Container(
+    return BlocProvider(
+      create: (context) => AuthCubit(Dio()),
+      child: Container(
         width: double.infinity,
         height: 300,
         decoration: BoxDecoration(
@@ -29,7 +32,26 @@ class Authenticate extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(19.0),
-          child: Column(
+          child: AuthenticateColumn(
+            id: id,
+            pin: pin,
+          )
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class AuthenticateColumn extends StatelessWidget {
+   AuthenticateColumn({super.key, required this.id, required this.pin});
+  final String id;
+  String pin ;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
@@ -46,28 +68,33 @@ class Authenticate extends StatelessWidget {
                 listener: (context, state) {
                   if (state is AuthSuccess) {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomeScreen(
-                                  name: state.loginEmployesModel.employeeName!,
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(
+                          name: state.loginEmployesModel.employeeName!,
+                        ),
+                      ),
+                    );
                   } else if (state is AuthFailure) {
-                    Get.snackbar('Error', 'Please Enter Valid Pin');
+                    Get.snackbar('Error', 'Please Enter Valid Pin',
+                        backgroundColor: AppColors.primaryColor,
+                        colorText: AppColors.whiteColor);
+                  } else if (state is AuthLoading) {
+                    Center(
+                      child: Lottie.asset(
+                        AppImageAsset.loading,
+                        width: 250,
+                        height: 250,
+                      ),
+                    );
                   }
                 },
-                child: OtpTextField(
-                  fieldWidth: 50.0,
-                  numberOfFields: 4,
-                  borderColor: AppColors.primaryColor,
-                  enabledBorderColor: AppColors.greyColor,
-                  focusedBorderColor: Colors.green,
-                  borderRadius: BorderRadius.circular(20),
-                  showFieldAsBox: true,
-                  onCodeChanged: (String code) {},
+                child: otpTextFieldwidget(
+                  context,
                   onSubmit: (String verificationCode) {
                     pin = verificationCode;
                     BlocProvider.of<AuthCubit>(context).login(id, pin);
-                  }, // end onSubmit
+                  }, // end on
                 ),
               ),
               const SizedBox(
@@ -101,9 +128,6 @@ class Authenticate extends StatelessWidget {
                 ],
               ),
             ],
-          ),
-        ),
-      
-    );
+          );
   }
 }

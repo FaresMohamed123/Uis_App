@@ -1,9 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:uis_app/cubit/LoginEmployes/AuthCubit.dart';
 import 'package:uis_app/cubit/get_user_details_cubit/GetUserDetails_cubit.dart';
 import 'package:uis_app/views/screen/appTheme.dart';
-import 'package:uis_app/views/screen/auth/get_user_Info.dart';
+import 'package:uis_app/views/screen/auth/get_user_Info_screen.dart';
 import 'package:uis_app/views/screen/auth/setup_pin.dart';
 import 'package:uis_app/views/screen/home_screen.dart';
 import 'package:uis_app/views/widget/attendance.dart';
@@ -14,7 +12,7 @@ class AppRout {
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/HomeScreen':
-        return MaterialPageRoute(builder: (context) =>  HomeScreen());
+        return MaterialPageRoute(builder: (context) => const HomeScreen());
       case '/':
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
@@ -31,14 +29,11 @@ class AppRout {
         return MaterialPageRoute(builder: (context) => const AppTheme());
       case '/Authenticate':
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => AuthCubit(Dio()),
-                  child: Authenticate(
-                    id: "",
-                  ),
+            builder: (context) => Authenticate(
+                  id: "",
                 ));
       default:
-        return MaterialPageRoute(builder: (context) =>  HomeScreen());
+        return MaterialPageRoute(builder: (context) => const GetUserInfo());
     }
   }
 }

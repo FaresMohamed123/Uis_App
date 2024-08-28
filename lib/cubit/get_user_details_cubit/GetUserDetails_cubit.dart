@@ -17,7 +17,7 @@ class GetUserDetailsCubit extends Cubit<GetUserDetailsState> {
           await GetUserDetailServices(Dio()).getUserDetails(id);
       emit(GetUserDetailsSuccess(getUserDetailsModel));
     } catch (e) {
-      emit(GetuserdetailsError("try again"));
+      emit(GetuserdetailsError("الرقم غير صحيح"));
     }
   }
 }

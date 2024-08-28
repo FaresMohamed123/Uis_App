@@ -13,10 +13,9 @@ class SearchLogin extends StatelessWidget {
     return SizedBox(
       width: 280,
       child: TextFormField(
-        inputFormatters: [LengthLimitingTextInputFormatter(14)],
+        maxLength: 14,
         controller: mycontroller,
         decoration: InputDecoration(
-          counterText: '14/14',
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
           prefixIcon: Padding(
