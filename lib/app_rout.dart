@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:uis_app/core/appThemeCore.dart/mymiddleware.dart';
 import 'package:uis_app/cubit/get_user_details_cubit/GetUserDetails_cubit.dart';
 import 'package:uis_app/views/screen/appTheme.dart';
 import 'package:uis_app/views/screen/auth/get_user_Info_screen.dart';

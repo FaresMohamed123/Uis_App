@@ -40,7 +40,7 @@ class DrawerHome extends StatelessWidget {
                       style: const TextStyle(
                           color: AppColors.blackColor, fontSize: 16),
                     ),
-                    const Text('(اسم الشركه)',
+                    const Text('(Mango Talaat)',
                         style: TextStyle(
                             fontSize: 18,
                             color: AppColors.primaryColor,

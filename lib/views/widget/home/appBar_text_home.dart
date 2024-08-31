@@ -20,7 +20,7 @@ AppBar appBarTextHome(BuildContext context) {
     actions: [
       IconButton(
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.pushNamed(context,'/');
         },
         icon: const Icon(Icons.exit_to_app),
       ),

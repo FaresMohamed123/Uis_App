@@ -11,15 +11,16 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future login(String id, String pin) async {
     emit(AuthLoading());
-
     try {
       final response = await dio
           .get("$baseUrl/Employee/LoginEmployee?nationalId=$id&Pin=$pin");
       LoginEmployesModel loginEmployesModel =
-          LoginEmployesModel.fromJson(response.data);
+          LoginEmployesModel.fromJson(response.data);          
       emit(AuthSuccess(loginEmployesModel: loginEmployesModel));
     } catch (e) {
       emit(AuthFailure('An error occurred: $e'));
     }
   }
+
+  
 }

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:uis_app/core/AppImageAsset.dart';
+import 'package:uis_app/core/alertexitapp.dart';
 import 'package:uis_app/core/app_colors.dart';
 import 'package:uis_app/cubit/resetpin/resetpin_cubit.dart';
 import 'package:uis_app/views/widget/auth/materialButtonSetUp.dart';
@@ -23,14 +24,18 @@ class SetupPin extends StatelessWidget {
       create: (context) => ResetPinCubit(Dio()),
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
-        body: SafeArea(
-          child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: SetupPinListView(
-                id: id,
-                pin2: pin2,
-                pin: pin,
-              )),
+        // ignore: deprecated_member_use
+        body: WillPopScope(
+      onWillPop: alertExitApp,
+          child: SafeArea(
+            child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SetupPinListView(
+                  id: id,
+                  pin2: pin2,
+                  pin: pin,
+                )),
+          ),
         ),
       ),
     );

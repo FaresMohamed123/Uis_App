@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:uis_app/app_rout.dart';
 import 'package:uis_app/core/appThemeCore.dart/services.dart';
 import 'package:uis_app/core/appThemeCore.dart/translation.dart';
 import 'package:uis_app/core/appThemeText.dart/changelocal.dart';
 
-
 LocaleController localeController = Get.put(LocaleController());
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
