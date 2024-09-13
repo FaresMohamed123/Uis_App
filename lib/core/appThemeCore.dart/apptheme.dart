@@ -22,3 +22,24 @@ ThemeData themelight = ThemeData(
 
   )
 );
+
+
+// مثال لتعريف الثيمات
+// final ThemeData themedark = ThemeData.dark().copyWith(
+//   brightness: Brightness.dark,
+//   colorScheme: const ColorScheme.dark(
+//    surface: Colors.black
+//   )
+//   // إعدادات أخرى للثيم الداكن
+// );
+
+// final ThemeData themelight = ThemeData.light().copyWith(
+//  brightness: Brightness.light,
+//   colorScheme: const ColorScheme.light(
+//     surface: Colors.white,
+
+//   )
+//   // إعدادات أخرى للثيم الفاتح
+// );
+
+

@@ -11,7 +11,7 @@ class LocaleController extends GetxController {
   ThemeData appThemedark = themedark;
   ThemeData appThemeslight = themelight;
   String selectedLanguage = "en";
-  ThemeData selectedTheme = themedark;
+  ThemeData selectedTheme = themelight;
 
   ThemeData appThemeapp(String theme) {
     selectedTheme = theme == "dark" ? themedark : themelight;
@@ -22,7 +22,7 @@ class LocaleController extends GetxController {
   }
 
   void changeTheme() {
-    selectedTheme == appThemedark ? appThemeapp("light") : appThemeapp("dark");
+    selectedTheme == themedark ? appThemeapp("light") : appThemeapp("dark");
   }
 
   void changeLanguage(String langcode) {
@@ -38,10 +38,11 @@ class LocaleController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    String savedTheme = myServices.sharedPreferences.getString("theme") ?? "dark";
+    //1
+    String savedTheme = myServices.sharedPreferences.getString("theme") ?? "light";
     selectedTheme = savedTheme == "dark" ? themedark : themelight;
     Get.changeTheme(selectedTheme);
-    selectedLanguage = myServices.sharedPreferences.getString("lang") ?? "en";
+    selectedLanguage = myServices.sharedPreferences.getString("lang") ?? "ar";
     if (selectedLanguage == "ar") {
       language = const Locale("ar");
       appTheme = themeArabic;
